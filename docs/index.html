@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Pipeline — Portfolio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+        header { text-align: center; padding: 4rem 0 2rem; }
+        h1 { font-size: 2.5rem; color: #58a6ff; margin-bottom: .5rem; }
+        .subtitle { color: #8b949e; font-size: 1.1rem; }
+        .badges { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; margin: 1.5rem 0; }
+        .badge { background: #21262d; padding: .3rem .8rem; border-radius: 20px; font-size: .85rem; border: 1px solid #30363d; }
+        .badge.py { border-color: #3572A5; }
+        .badge.docker { border-color: #2496ED; }
+        .badge.aws { border-color: #FF9900; }
+        .badge.tf { border-color: #844FBA; }
+        .badge.gha { border-color: #2088FF; }
+
+        .section { margin: 3rem 0; }
+        h2 { color: #58a6ff; margin-bottom: 1rem; font-size: 1.5rem; border-bottom: 1px solid #21262d; padding-bottom: .5rem; }
+        .arch { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 2rem; font-family: monospace; white-space: pre; overflow-x: auto; font-size: .85rem; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.5rem; }
+        .card h3 { color: #58a6ff; margin-bottom: .5rem; }
+        .card p { color: #8b949e; font-size: .9rem; }
+        code { background: #21262d; padding: .2rem .5rem; border-radius: 4px; font-size: .85rem; }
+        pre { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; overflow-x: auto; margin: 1rem 0; }
+        .links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+        .btn { display: inline-block; padding: .7rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; }
+        .btn.primary { background: #238636; color: #fff; }
+        .btn.secondary { background: #21262d; color: #c9d1d9; border: 1px solid #30363d; }
+        .btn:hover { opacity: .85; }
+        .footer { text-align: center; padding: 3rem 0; color: #484f58; font-size: .85rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔧 DevOps Pipeline</h1>
+            <p class="subtitle">Pipeline CI/CD complet avec monitoring, infrastructure as code et conteneurisation</p>
+            <div class="badges">
+                <span class="badge py">Python</span>
+                <span class="badge">Flask</span>
+                <span class="badge docker">Docker</span>
+                <span class="badge gha">GitHub Actions</span>
+                <span class="badge tf">Terraform</span>
+                <span class="badge aws">AWS</span>
+                <span class="badge">Prometheus</span>
+                <span class="badge">Grafana</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>Architecture</h2>
+            <div class="arch">
+┌──────────┐     ┌──────────┐     ┌──────────┐     ┌──────────┐
+│  Lint    │ ──▶ │  Test    │ ──▶ │  Build   │ ──▶ │  Deploy  │
+│ (flake8) │     │ (pytest) │     │ (Docker) │     │(Terraform│
+└──────────┘     └──────────┘     └──────────┘     │  + AWS ) │
+                                                    └──────────┘
+
+Monitoring :
+┌──────────┐     ┌──────────┐
+│Prometheus│ ◀── │  Flask   │
+│ :9090    │     │  App     │
+└────┬─────┘     └──────────┘
+     │
+┌────▼─────┐
+│ Grafana  │
+│ :3000    │
+└──────────┘</div>
+        </section>
+
+        <section class="section">
+            <h2>Pipeline CI/CD</h2>
+            <div class="features">
+                <div class="card">
+                    <h3>✅ Lint</h3>
+                    <p>Vérification de la qualité du code avec flake8</p>
+                </div>
+                <div class="card">
+                    <h3>🧪 Test</h3>
+                    <p>Tests unitaires pytest avec rapport de couverture</p>
+                </div>
+                <div class="card">
+                    <h3>🐳 Build</h3>
+                    <p>Image Docker multi-stage, push sur GitHub Container Registry</p>
+                </div>
+                <div class="card">
+                    <h3>🚀 Deploy</h3>
+                    <p>Provisionnement EC2 avec Terraform, déploiement automatique</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Stack technique</h2>
+            <pre>Application  → Python / Flask
+Conteneur    → Docker / Docker Compose
+CI/CD        → GitHub Actions
+IaC          → Terraform (AWS)
+Monitoring   → Prometheus + Grafana
+Logs         → AWS CloudWatch</pre>
+        </section>
+
+        <section class="section">
+            <h2>Démarrage rapide</h2>
+            <pre>make install      # Installer les dépendances
+make test         # Lancer les tests
+make docker-up    # Stack complet (app + Prometheus + Grafana)</pre>
+        </section>
+
+        <div class="links">
+            <a href="https://github.com/Madrank/devops-pipeline" class="btn primary">Voir sur GitHub</a>
+            <a href="https://github.com/Madrank/devops-pipeline/blob/main/README.md" class="btn secondary">Documentation</a>
+        </div>
+
+        <footer class="footer">
+            Projet portfolio — Madrank © 2026
+        </footer>
+    </div>
+</body>
+</html>
